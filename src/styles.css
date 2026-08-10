@@ -34,8 +34,8 @@ h1 { margin: 0; color: #0b2545; font-size: 28px; letter-spacing: 0; }
 .page-grid { display: grid; gap: 12px; align-items: start; }
 .overview-grid { grid-template-columns: minmax(460px, 1.35fr) minmax(320px, .65fr); }
 .overview-grid .panel:nth-child(3) { grid-column: 1 / -1; }
-.detail-grid, .aerotrace-grid, .safegate-grid, .simulation-grid, .maintenance-grid, .complaints-grid, .reports-grid, .replay-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.detail-grid .panel:nth-child(2), .simulation-grid .panel:nth-child(1), .reports-grid .panel:nth-child(2), .replay-grid .panel:nth-child(1) { grid-column: 1 / -1; }
+.detail-grid, .aerotrace-grid, .safegate-grid, .hardware-grid, .simulation-grid, .maintenance-grid, .complaints-grid, .reports-grid, .replay-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.detail-grid .panel:nth-child(2), .hardware-grid .panel:nth-child(1), .simulation-grid .panel:nth-child(1), .reports-grid .panel:nth-child(2), .replay-grid .panel:nth-child(1) { grid-column: 1 / -1; }
 
 .panel { background: #fff; border: 1px solid #dbe2e7; border-radius: 8px; padding: 14px; box-shadow: 0 1px 2px rgba(15, 35, 55, .04); min-width: 0; }
 .panel-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; color: #0b2545; font-weight: 800; }
@@ -126,6 +126,19 @@ tbody tr:hover { background: #f6fbfb; }
 .sg-item small { display: block; color: #60717d; line-height: 1.35; }
 .failsafe-list { align-items: start; }
 
+.pipeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.pipeline div { border: 1px solid #dbe2e7; background: #f8fafb; border-radius: 6px; padding: 11px; display: grid; gap: 7px; min-height: 118px; }
+.pipeline svg { color: #028090; }
+.pipeline strong { color: #0b2545; }
+.pipeline span { color: #5b6b75; font-size: 13px; line-height: 1.35; }
+.evidence-card { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+.evidence-card a { color: #0b5cad; font-weight: 800; text-decoration: none; }
+.evidence-card a:hover { text-decoration: underline; }
+.output-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.output-state { border: 1px solid #dbe2e7; background: #f8fafb; border-radius: 6px; padding: 10px; min-height: 64px; }
+.output-state strong, .output-state span { display: block; }
+.output-state span { margin-top: 6px; color: #0b2545; font-weight: 850; }
+
 .scenario-grid { display: grid; grid-template-columns: repeat(5, minmax(130px, 1fr)); gap: 8px; }
 .scenario { background: #f8fafb; border: 1px solid #dbe2e7; color: #142333; border-radius: 6px; padding: 9px; display: grid; gap: 4px; text-align: left; min-height: 84px; }
 .scenario.selected { border-color: #0b2545; box-shadow: inset 0 0 0 1px #0b2545; background: #eef6ff; }
@@ -154,17 +167,18 @@ textarea { resize: vertical; min-height: 88px; }
   .sidebar { position: static; height: auto; }
   nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .topbar { align-items: flex-start; flex-direction: column; }
-  .overview-grid, .detail-grid, .aerotrace-grid, .safegate-grid, .simulation-grid, .maintenance-grid, .complaints-grid, .reports-grid, .replay-grid { grid-template-columns: 1fr; }
-  .overview-grid .panel:nth-child(3), .detail-grid .panel:nth-child(2), .simulation-grid .panel:nth-child(1), .reports-grid .panel:nth-child(2), .replay-grid .panel:nth-child(1) { grid-column: auto; }
+  .overview-grid, .detail-grid, .aerotrace-grid, .safegate-grid, .hardware-grid, .simulation-grid, .maintenance-grid, .complaints-grid, .reports-grid, .replay-grid { grid-template-columns: 1fr; }
+  .overview-grid .panel:nth-child(3), .detail-grid .panel:nth-child(2), .hardware-grid .panel:nth-child(1), .simulation-grid .panel:nth-child(1), .reports-grid .panel:nth-child(2), .replay-grid .panel:nth-child(1) { grid-column: auto; }
   .scenario-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .sg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pipeline, .output-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 640px) {
   main { padding: 10px; }
   h1 { font-size: 23px; }
   nav { grid-template-columns: 1fr 1fr; }
-  .stats-grid, .scenario-grid, .sg-grid { grid-template-columns: 1fr; }
+  .stats-grid, .scenario-grid, .sg-grid, .pipeline, .output-grid { grid-template-columns: 1fr; }
   .equipment, .meter { grid-template-columns: 1fr; }
   .floor-map { min-height: 240px; }
   .alert-strip { grid-template-columns: 1fr; }
